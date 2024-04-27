@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "940668532893",
+    "project_id": "mob-financeiro",
+    "storage_bucket": "mob-financeiro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940668532893:android:65739546fad84485433c74",
+        "android_client_info": {
+          "package_name": "com.financeiro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF2gQ-mdwpTjzThXLRui_YFI53LCQakHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
