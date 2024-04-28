@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigation } from '@react-navigation/native';
 import { IndexPath, SelectItem } from '@ui-kitten/components';
-import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
 import * as yup from 'yup';
 
 import { Category } from '../../@types';
@@ -13,12 +12,15 @@ import usePaymentsStore from '../../store/usePaymentsStore';
 
 import { Header } from '../../components';
 import { StyledButton, StyledContainer, StyledContent, StyledInput, StyledSelect } from './styles';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 function Register(): React.JSX.Element {
     const navigation = useNavigation();
     const { categories } = useCategoryStore();
     const { payments, setPayments } = usePaymentsStore();
-    const [selectedIndex, setSelectedIndex] = React.useState<any>(new IndexPath(-1));
+
+    const [showAlert, setShowAlert] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState<any>(new IndexPath(-1));
 
     const displayValue = categories[selectedIndex.row]?.label;
 
@@ -72,22 +74,30 @@ function Register(): React.JSX.Element {
             id: new Date().getTime().toString()
         };
 
-        setPayments([...payments, payload]);
-
-        Dialog.show({
-            type: ALERT_TYPE.SUCCESS,
-            title: 'Pagamento cadastrado',
-            textBody:
-                'Seu pagamento foi cadastrado e está disponível para visualização na sua lista pagamentos.',
-            button: 'OK'
-        });
-
-        handleNavigation();
+        setPayments([payload, ...payments]);
+        setShowAlert(true);
     };
 
     return (
         <>
             <Header title='Novo pagamento' />
+            <AwesomeAlert
+                show={showAlert}
+                showConfirmButton
+                confirmText='OK'
+                confirmButtonStyle={{
+                    width: '40%',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+                confirmButtonColor='blue'
+                title='Pagamento cadastrado'
+                message='Seu pagamento foi cadastrado e está disponível para visualização na sua lista pagamentos.'
+                onConfirmPressed={() => {
+                    handleNavigation();
+                    setShowAlert(false);
+                }}
+            />
             <StyledContainer>
                 <StyledContent>
                     <Controller
