@@ -1,3 +1,27 @@
+// prettier-ignore
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "test/*": ["test/*"],
+      "underscore": ["lodash"]
+    },
+    "jsx": "react-native",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js",
+    "__tests__/**/*.test.ts"
+  ],
+  "typedocOptions": {
+    "entryPoints": ["src/utils/*.ts"],
+    "out": "docs"
+  }
 }
