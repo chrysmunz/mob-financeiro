@@ -78,3 +78,5 @@ To learn more about React Native, take a look at the following resources:
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 # financeiro
+
+[![Video](http://img.youtube.com/vi/PPZ8fXXXhSc/0.jpg)](http://www.youtube.com/watch?v=PPZ8fXXXhSc)
